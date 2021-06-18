@@ -1,0 +1,37 @@
+<!-- Extend base.html -->
+{% extends "base.html" %}
+
+{% block content %}  
+
+  <!-- Parse navbar file -->
+  {% include "employees/navbar.html" %}
+
+  <div class="container">
+
+    <!-- Load crispy_forms features -->
+    {% load crispy_forms_tags %}
+
+    <div class="container py-5" >
+
+      <!-- Login Heading -->
+      <h1>Login</h1>
+
+      <!-- Login Form--> 
+      <form method="POST">
+        {% csrf_token %}
+        {{ login_form|crispy }}
+        <button class="btn btn-primary" type="submit">Login</button>
+      </form>
+
+      <!-- Alert messages by login_request method in views.py -->
+      {% for message in messages %}
+          <div class="alert alert-{ message.tags }} alert-dismissible fade show" role="alert">
+          <strong>Info: </strong> {{ message }} 
+        </div>
+      {% endfor %}
+
+      <p class="text-center">Don't have an account? <a href="../register">Create an account</a>.</p>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+<!-- Extend base.html file -->
+{% extends "base.html" %}
+
+{% block content %} 
+
+	<!-- Parse navbar file -->
+	{% include "employees/navbar.html" %}
+
+	<div class="container">
+
+		<!-- Load crispy_forms features -->
+		{% load crispy_forms_tags %}  
+
+		<!--Register--> 
+		<div class="container py-5">
+			<h1>Register</h1>
+
+			<!-- RegistationForm of emplyee -->
+			<form method="POST">
+				{% csrf_token %}
+				{{ register_form|crispy }}                    
+				<button class="btn btn-primary" type="submit">Register</button>
+			</form>
+
+			<!-- Alert messages by register_request method in views.py -->
+			{% for message in messages %}
+				<div class="alert alert-{ message.tags }} alert-dismissible fade show" role="alert">
+					<strong>Info: </strong> {{ message }} 
+				</div>
+			{% endfor %}     	
+
+			<p class="text-center">If you already have an account, <a href="../login">login</a> instead.</p>
+		</div>
+	</div>
+
+{% endblock %}

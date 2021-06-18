@@ -1,0 +1,92 @@
+<!-- Extend base.html file -->
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<!-- Parse navbar file -->
+	{% include "product/navbar.html" %}
+
+	<!-- If user authenticate see product list. Otherwise, First need to go on login -->
+	{% if user.is_authenticated %} 
+
+		<!-- Alert messages -->
+		{% for message in messages %}
+			<div class="alert alert-{ message.tags }} alert-dismissible fade show" role="alert">
+				<strong>Message: </strong> {{ message }} 
+			</div>
+		{% endfor %}
+		<div class="container">
+			<div class="add_buttons mt-4">
+
+				<!-- Buttons of item list and add item -->
+				<div class="button-group">
+					<a href="../laptops/" class="btn btn-primary btn-md btn-trim" role="button"> Laptops</a>
+					<a href="../laptops/add_laptops" class="btn btn-warning btn-sm btn-pad" role="button"> +</a>
+
+					<a href="../desktops" class="btn btn-primary btn-md btn-trim" role="button"> Desktops</a>
+					<a href="../desktops/add_desktops" class="btn btn-warning btn-sm btn-pad" role="button"> +</a>
+
+					<a href="../mobiles/" class="btn btn-primary btn-md btn-trim" role="button"> Mobiles</a>
+					<a href="../mobiles/add_mobiles" class="btn btn-warning btn-sm btn-pad" role="button"> +</a>
+				</div>
+			</div>
+
+			<div class="mt-4">
+				<!-- Item list heading -->
+				<h4>Currently Viewing {{ header }}</h4>
+			</div>
+
+			<table class="table table-hover">
+
+				<!-- Item table header part -->
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Model</th>
+						<th>Price</th>
+						<th>Status</th>
+						<th>Issues</th>
+						<th></th>
+					</tr>
+				</thead>
+
+				<!-- Item table data  part -->
+				<tbody>
+					{% for item in items %}
+						<tr>
+							<td>{{ item.pk }}
+							<td>{{ item.type }}</td>
+							<td>{{ item.price }} $</td>
+							<td>{{ item.status }}</td>
+							<td>{{ item.issues }}</td>
+
+							{% if header|lower == "laptops" %}
+								<td>
+									<a href="./edit_item/{{item.id}}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > Edit</a>
+									<a href="./delete/{{item.id}}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > Delete</a>
+								</td>
+							{% elif header|lower == "desktops" %}
+								<td>
+									<a href="./edit_item/{{item.id}}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > Edit</a>
+									<a href="./delete/{{item.id}}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > Delete</a>
+								</td>
+							{% else %}
+								<td>
+									<a href="./edit_item/{{item.id}}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > Edit</a>
+									<a href="./delete/{{item.id}}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > Delete</a>
+								</td>
+							{% endif %}
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		
+	{% else %}
+		<div class="text-center mt-5">
+			<p> Please login to see page.</p>
+			<a href="../../employee/login/" class="btn btn-primary btn-md btn-trim" role="button">Login</a>
+		</div>
+	{% endif %}
+	
+{% endblock content%}

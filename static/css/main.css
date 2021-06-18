@@ -1,0 +1,19 @@
+/* CSS file*/
+
+@media (max-width: 660px ){
+	html {
+		font-size: 80% !important;
+	}
+ } 
+
+@media (max-width: 540px ){
+	html {
+		font-size: 60% !important;
+	}
+ }  
+
+@media (max-width: 400px ){
+	html {
+		font-size: 50% !important;
+	}
+ }   
