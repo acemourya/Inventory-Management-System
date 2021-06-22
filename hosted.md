@@ -1,4 +1,4 @@
-# Hosting django project:
+# Hosting django project on heroku:
 
 ## 1. Set up the virtual environment -
 
