@@ -99,7 +99,7 @@ $ source ./venv/bin/activate
 
     Domain_name: "demo.herokuapp.com"
     
-## 8. Login in your terminal and upload on heroku.
+## 8. Login heroku in terminal and upload on heroku by these commands
 
     $ git init
     $ heroku login
