@@ -71,7 +71,7 @@ $ source ./venv/bin/activate
 
     $ pip3 freeze > requirements.txt
 
-## 6. login heroku make app on browser with python mode
+## 6. login heroku generate an app in python mode on heroku
    
 
 ## 7. Settings.py
