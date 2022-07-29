@@ -1,6 +1,4 @@
-# Django Toy Project : 
-
-## Inventory Management System( IMS ):
+# Inventory Management System( IMS ):
 1. Manager: The person who manage the website content.
 2. Employee:The person who manage products detail.
 3. User: The person who viste on website.
